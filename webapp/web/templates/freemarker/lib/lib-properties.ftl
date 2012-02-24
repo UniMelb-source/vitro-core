@@ -133,7 +133,7 @@ name will be used as the label. -->
 
 <#macro propertyListItem property statement editable >
     <li role="listitem">    
-        <#nested>        
+        <#nested>       
         <@editingLinks "${property.localName}" statement editable/>
     </li>
 </#macro>
@@ -142,6 +142,7 @@ name will be used as the label. -->
     <#if editable>
         <@editLink propertyLocalName statement extraParams />
         <@deleteLink propertyLocalName statement extraParams />
+     
     </#if>
 </#macro>
 
@@ -227,4 +228,8 @@ name will be used as the label. -->
     </#list>
 </#macro>
 
+<#--Property group names may have spaces in them, replace spaces with underscores for html id/hash-->
+<#function createPropertyGroupHtmlId propertyGroupName>
+	<#return propertyGroupName?replace(" ", "_")>
+</#function>
 
